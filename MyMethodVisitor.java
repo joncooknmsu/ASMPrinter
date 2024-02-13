@@ -1,5 +1,6 @@
 
 import org.objectweb.asm.*;
+import org.objectweb.asm.util.Printer;
 
 public class MyMethodVisitor extends MethodVisitor
 {
@@ -17,10 +18,12 @@ MyMethodVisitor​(ClassPrinter v)
 public void visitInsn​(int opcode)
 {
    count++;
-   System.out.println("No-operand instruction!" + opcode);
+   System.out.println("No-operand instruction: opcode=" + opcode +
+                      " name=" + Printer.OPCODES[opcode]);
 }
 
 public void visitEnd() {
    cv.addNoops(count);
 }
-}
+
+} //end class

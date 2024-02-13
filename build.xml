@@ -1,11 +1,14 @@
 <project name="asmprinter" default="compile">
 
+<property name="asm.dir" location="/home/jcook/tools/lib" />
+<property name="classpath" value="${asm.dir}/asm-9.6.jar:${asm.dir}/asm-util-9.6.jar:."/>
+<!-- classpath="${asm.dir}/asm-9.6.jar:${asm.dir}/asm-util-9.6.jar:." -->
  <target name="compile">
-   <javac srcdir="." includeantruntime="false" debug="true" classpath="/home/jcook/tools/lib/asm-9.2.jar:."/>
+   <javac srcdir="." includeantruntime="false" debug="true" classpath="${classpath}"/>
  </target>
  
   <target name="run" depends="compile">
-   <java classname="ClassPrinter" fork="true" classpath="/home/jcook/tools/lib/asm-9.2.jar:.">
+   <java classname="ClassPrinter" fork="true" classpath="${classpath}">
      <arg value="ClassPrinter"/>
    </java>
  </target>
